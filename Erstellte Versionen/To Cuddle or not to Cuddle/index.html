@@ -17,6 +17,46 @@
 
     main {
       text-align: center;
+      width: 100%;
+      max-width: 500px;
+      padding: 20px;
+    }
+
+    /* Progress Bar Container */
+    .progress-container {
+      width: 100%;
+      background-color: #ddd;
+      border-radius: 25px;
+      overflow: hidden;
+      margin-bottom: 15px;
+      height: 30px;
+      position: relative;
+    }
+
+    .progress-fill {
+      background-color: #4CAF50;
+      height: 100%;
+      width: 0%;
+      transition: width 0.4s ease;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
+    }
+
+    .progress-text {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      color: white;
+      pointer-events: none;
+      font-size: 16px;
+      text-shadow: 1px 1px 2px #000;
     }
 
     #animalImage img {
@@ -42,7 +82,7 @@
       background-color: #45a049;
     }
 
-    #score, #round, #feedback {
+    #score, #feedback {
       margin-top: 15px;
       font-size: 18px;
     }
@@ -50,16 +90,39 @@
     #feedback {
       font-style: italic;
     }
+
+    .btn:disabled {
+      background-color: #ccc;
+      cursor: not-allowed;
+    }
+
+    #getResultBtn {
+      margin-top: 20px;
+      display: none;
+    }
   </style>
 </head>
 <body>
   <main>
+    <!-- Progress Bar -->
+    <div class="progress-container">
+      <div id="roundProgressFill" class="progress-fill"></div>
+      <div id="roundProgressText" class="progress-text">Round: 1 / 20</div>
+    </div>
+
     <div id="animalImage"><img src="" alt="Animal" /></div>
+
     <button id="yesBtn" class="btn">Cuddle</button>
     <button id="noBtn" class="btn">No Cuddle</button>
+    <button id="getResultBtn" class="btn">Get Your Result</button>
+
+    <div id="resultImage" style="display:none;">
+      <img src="" alt="Result Image" id="resultImg" width="200" />
+    </div>
+    <button id="tryAgainBtn" class="btn" style="display:none;">Try Again</button>
+
     <div id="feedback"></div>
-    <div id="score">Score: 0</div>
-    <div id="round">Round: 1 / 20</div>
+    <div id="score" style="display: none;">Score: 0</div>
 
     <script src="lib/ml5.1.2.1.min.js"></script>
     <script src="lib/p5.min.js"></script>
