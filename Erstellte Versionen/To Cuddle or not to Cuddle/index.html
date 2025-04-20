@@ -22,6 +22,46 @@
       padding: 20px;
     }
 
+    /* Start Screen */
+    #startScreen {
+      display: block;
+    }
+
+    #gameScreen {
+      display: none;
+    }
+
+    /* Headline */
+    h1 {
+      font-size: 32px;
+      color: #4CAF50;
+      margin-bottom: 15px;
+      text-shadow: 1px 1px 2px #000;
+    }
+
+    /* Description Text */
+    .description {
+      font-size: 16px;
+      color: #555;
+      margin-bottom: 25px;
+      line-height: 1.5;
+    }
+
+    .btn {
+      padding: 10px 20px;
+      margin: 5px;
+      font-size: 18px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      background-color: #4CAF50;
+      color: white;
+    }
+
+    .btn:hover {
+      background-color: #45a049;
+    }
+
     /* Progress Bar Container */
     .progress-container {
       width: 100%;
@@ -67,21 +107,6 @@
       margin-bottom: 15px;
     }
 
-    .btn {
-      padding: 10px 20px;
-      margin: 5px;
-      font-size: 18px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      background-color: #4CAF50;
-      color: white;
-    }
-
-    .btn:hover {
-      background-color: #45a049;
-    }
-
     #score, #feedback {
       margin-top: 15px;
       font-size: 18px;
@@ -100,33 +125,67 @@
       margin-top: 20px;
       display: none;
     }
+
+    #resultImage {
+      display: none;
+    }
+
   </style>
 </head>
 <body>
   <main>
-    <!-- Progress Bar -->
-    <div class="progress-container">
-      <div id="roundProgressFill" class="progress-fill"></div>
-      <div id="roundProgressText" class="progress-text">Round: 1 / 20</div>
+    <!-- Start Screen -->
+    <div id="startScreen">
+      <h1>To Cuddle or not to Cuddle</h1>
+      <p class="description">
+        Welcome to the "To Cuddle or not to Cuddle" game! In each round, you'll be shown an image of an animal. You will then decide whether or not you want to cuddle it. The game is all about making these decisions and seeing how well you align with your animal instincts. 
+        Can you make it to the top as the ultimate animal lover? Let's find out!
+      </p>
+      <button id="letsPlayBtn" class="btn">Let's Play</button>
     </div>
 
-    <div id="animalImage"><img src="" alt="Animal" /></div>
+    <!-- Game Screen -->
+    <div id="gameScreen">
+      <!-- Progress Bar -->
+      <div class="progress-container">
+        <div id="roundProgressFill" class="progress-fill"></div>
+        <div id="roundProgressText" class="progress-text">Round: 1 / 20</div>
+      </div>
 
-    <button id="yesBtn" class="btn">Cuddle</button>
-    <button id="noBtn" class="btn">No Cuddle</button>
-    <button id="getResultBtn" class="btn">Get Your Result</button>
+      <div id="animalImage"><img src="" alt="Animal" /></div>
 
-    <div id="resultImage" style="display:none;">
-      <img src="" alt="Result Image" id="resultImg" width="200" />
+      <button id="yesBtn" class="btn">Cuddle</button>
+      <button id="noBtn" class="btn">No Cuddle</button>
+      <button id="getResultBtn" class="btn">Get Your Result</button>
+
+      <div id="resultImage">
+        <img src="" alt="Result Image" id="resultImg" width="200" />
+      </div>
+      <button id="tryAgainBtn" class="btn" style="display:none;">Try Again</button>
+
+      <div id="feedback"></div>
+      <div id="score" style="display: none;">Score: 0</div>
     </div>
-    <button id="tryAgainBtn" class="btn" style="display:none;">Try Again</button>
-
-    <div id="feedback"></div>
-    <div id="score" style="display: none;">Score: 0</div>
 
     <script src="lib/ml5.1.2.1.min.js"></script>
     <script src="lib/p5.min.js"></script>
     <script src="index.js"></script>
   </main>
+
+  <script>
+    // When the "Let's Play" button is clicked, start the game
+    document.getElementById("letsPlayBtn").addEventListener("click", function() {
+      // Hide the start screen (intro)
+      document.getElementById("startScreen").style.display = "none";
+      
+      // Show the game screen
+      document.getElementById("gameScreen").style.display = "block";
+      
+      // Start the game by calling the setupGame function
+      setupGame();
+    });
+
+    // Your existing JS functions for the game setup (setupGame, loadNextRound, etc.)
+  </script>
 </body>
 </html>

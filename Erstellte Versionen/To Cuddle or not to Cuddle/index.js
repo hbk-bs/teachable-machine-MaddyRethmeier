@@ -1,6 +1,6 @@
 // Classifier Variable
 let classifier;
-let imageModelURL = 'https://teachablemachine.withgoogle.com/models/AhU4RtWbu/'; // Your model
+let imageModelURL = 'https://teachablemachine.withgoogle.com/models/F4MjnKIyV/'; // Your model
 
 // Game state
 let score = 0;
