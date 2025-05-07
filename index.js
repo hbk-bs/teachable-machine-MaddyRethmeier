@@ -90,7 +90,10 @@ function loadNextRound() {
 
   document.getElementById('yesBtn').disabled = true;
   document.getElementById('noBtn').disabled = true;
-  document.getElementById('feedback').textContent = '';
+  const feedbackEl = document.getElementById('feedback');
+feedbackEl.textContent = '';
+feedbackEl.style.opacity = '0';
+
 
   const imgSrc = shuffledImages[round - 1]; // Bild aus gemischter Liste nehmen
   const imgEl = document.querySelector("#animalImage img");
@@ -144,7 +147,10 @@ function handleChoice(choice) {
   }
 
   classificationReady = false;
-  document.getElementById('feedback').textContent = feedback;
+  const feedbackEl = document.getElementById('feedback');
+feedbackEl.textContent = feedback;
+feedbackEl.style.opacity = '1';
+
 
   if (round === totalRounds) {
     document.getElementById('yesBtn').disabled = true;

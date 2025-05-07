@@ -71,20 +71,34 @@
       line-height: 1.5;
     }
 
-    .btn {
-      padding: 10px 20px;
-      margin: 5px;
-      font-size: 18px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      background-color: #4CAF50;
-      color: white;
-    }
+    /* Standardize button size */
+.btn {
+  padding: 12px 20px; /* Make padding equal for both axes */
+  margin: 5px;
+  font-size: 18px;
+  width: 200px; /* Set a fixed width for both buttons */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #4CAF50;
+  color: white;
+  text-align: center;
+}
 
-    .btn:hover {
-      background-color: #45a049;
-    }
+.btn:hover {
+  background-color: #45a049;
+}
+
+.btn:disabled {
+  background-color: #ffffff;
+  cursor: not-allowed;
+}
+
+/* Ensure buttons are aligned */
+#yesBtn, #noBtn {
+  display: inline-block;
+}
+
 
     /* Progress Bar Container */
     .progress-container {
@@ -137,8 +151,14 @@
     }
 
     #feedback {
-      font-style: italic;
-    }
+  font-style: italic;
+  min-height: 40px; /* Reserve space to avoid layout shift */
+  margin-top: 15px;
+  font-size: 18px;
+  opacity: 0; /* Start hidden */
+  transition: opacity 0.3s ease;
+}
+
 
     .btn:disabled {
       background-color: #ffffff;
