@@ -26,16 +26,6 @@
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
     }
 
-    /* Start Screen */
-    #startScreen {
-      display: block;
-    }
-
-    #gameScreen {
-      display: none;
-    }
-
-    /* Headline */
     h1 {
       font-size: 32px;
       color: #2e8b57; /* Darker green for headline */
@@ -43,7 +33,6 @@
       text-shadow: 1px 1px 2px rgba(0,0,0,0.2); /* Softer shadow */
     }
 
-    /* Description Text */
     .description {
       font-size: 16px;
       color: #555;
@@ -64,124 +53,14 @@
       box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Button shadow */
     }
 
-    .btn:hover:not(:disabled) { /* Hover effect only when not disabled */
+    .btn:hover:not(:disabled) {
       background-color: #45a049;
-      transform: translateY(-2px); /* Slight lift on hover */
+      transform: translateY(-2px);
     }
 
-    .btn:active:not(:disabled) { /* Click effect */
+    .btn:active:not(:disabled) {
       transform: translateY(0);
       box-shadow: 0 1px 2px rgba(0,0,0,0.1);
-    }
-
-    /* Specific button styling */
-    #yesBtn {
-      background-color: #28a745; /* A more vibrant green for 'Cuddle' */
-    }
-    #yesBtn:hover:not(:disabled) {
-      background-color: #218838;
-    }
-
-    #noBtn {
-      background-color: #dc3545; /* Red for 'No Cuddle' */
-    }
-    #noBtn:hover:not(:disabled) {
-      background-color: #c82333;
-    }
-
-    .btn:disabled {
-      background-color: #cccccc; /* Light gray for disabled buttons */
-      color: #888888; /* Darker gray text */
-      cursor: not-allowed;
-      box-shadow: none; /* No shadow when disabled */
-      transform: none; /* No transform when disabled */
-    }
-
-
-    /* Progress Bar Container */
-    .progress-container {
-      width: 100%;
-      background-color: #ddd;
-      border-radius: 25px;
-      overflow: hidden;
-      margin-bottom: 20px; /* More space below progress bar */
-      height: 35px; /* Taller progress bar */
-      position: relative;
-      box-shadow: inset 0 1px 3px rgba(0,0,0,0.1); /* Inner shadow for depth */
-    }
-
-    .progress-fill {
-      background-color: #4CAF50;
-      height: 100%;
-      width: 0%;
-      transition: width 0.6s ease-out; /* Slower, smoother transition */
-      position: absolute;
-      top: 0;
-      left: 0;
-      z-index: 1;
-      border-radius: 25px; /* Match container border-radius */
-    }
-
-    .progress-text {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      z-index: 2;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: bold;
-      color: white;
-      pointer-events: none;
-      font-size: 17px;
-      text-shadow: 1px 1px 3px rgba(0,0,0,0.4); /* Stronger text shadow */
-    }
-
-    #animalImage img {
-      width: 320px;
-      height: 240px;
-      object-fit: cover;
-      border: 4px solid #a3e4d7; /* A softer, themed border */
-      border-radius: 10px; /* Rounded image corners */
-      margin-bottom: 25px; /* More space below image */
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* More prominent image shadow */
-    }
-
-    #score, #feedback {
-      margin-top: 20px; /* More space above score/feedback */
-      font-size: 20px; /* Larger font */
-      font-weight: bold;
-      color: #333;
-    }
-
-    #feedback {
-      font-style: italic;
-      color: #666;
-      margin-bottom: 15px; /* Space below feedback */
-    }
-
-    #getResultBtn {
-      margin-top: 30px; /* More space above this button */
-      background-color: #007bff; /* Blue for 'Get Result' */
-    }
-    #getResultBtn:hover:not(:disabled) {
-      background-color: #0056b3;
-    }
-
-    #tryAgainBtn {
-      margin-top: 30px;
-      background-color: #6c757d; /* Gray for 'Try Again' */
-    }
-    #tryAgainBtn:hover:not(:disabled) {
-      background-color: #5a6268;
-    }
-
-    #resultImage img {
-      max-width: 80%; /* Ensure result image fits */
-      height: auto;
-      border-radius: 10px;
-      margin-top: 20px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
     }
   </style>
 </head>
@@ -191,38 +70,11 @@
       <h1>To Cuddle or not to Cuddle</h1>
       <p class="description">
         Welcome to "To Cuddle or not to Cuddle"!
-        In each round, you'll be shown an image of an animal, and your task is simple: decide whether or not you would want to cuddle it. Don’t think about danger, survival, or practicality—this game is all about your gut feeling and personal preference.
-
-        Each animal has been pre-classified based on my own opinions, so let's see how closely your cuddly instincts match mine!
-
+        Choose between playing a multi-round game where you decide whether to cuddle various animals, or upload your own image to see if I (the Teachable Machine) would cuddle it and if we'd be friends!
       </p>
-      <button id="letsPlayBtn" class="btn">Let's Play</button>
+      <button id="letsPlayBtn" class="btn" onclick="window.location.href='game.html'">Play Game</button>
+      <button id="uploadOwnBtn" class="btn" onclick="window.location.href='upload.html'">Upload Your Own</button>
     </div>
-
-    <div id="gameScreen">
-      <div class="progress-container">
-        <div id="roundProgressFill" class="progress-fill"></div>
-        <div id="roundProgressText" class="progress-text">Round: 1 / 20</div>
-      </div>
-
-      <div id="animalImage"><img src="" alt="Animal" /></div>
-
-      <button id="yesBtn" class="btn">Cuddle</button>
-      <button id="noBtn" class="btn">No Cuddle</button>
-      <button id="getResultBtn" class="btn">Get Your Result</button>
-
-      <div id="resultImage">
-        <img src="" alt="Result Image" id="resultImg" width="200" />
-      </div>
-      <button id="tryAgainBtn" class="btn" style="display:none;">Try Again</button>
-
-      <div id="feedback"></div>
-      <div id="score" style="display: none;">Score: 0</div>
-    </div>
-
-    <script src="lib/ml5.1.2.1.min.js"></script>
-    <script src="lib/p5.min.js"></script>
-    <script src="index.js"></script>
   </main>
 </body>
 </html>

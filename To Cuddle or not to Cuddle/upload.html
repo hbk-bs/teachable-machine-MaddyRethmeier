@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Animal Cuddle Predictor - Upload Mode</title>
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #e4f8fc; /* Light blue background */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden; /* Prevent scrolling if not needed */
+    }
+
+    main {
+      text-align: center;
+      width: 100%;
+      max-width: 500px;
+      padding: 20px;
+      background-color: #fff; /* White background for the game content */
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    }
+
+    h1 {
+      font-size: 32px;
+      color: #2e8b57; /* Darker green for headline */
+      margin-bottom: 15px;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.2); /* Softer shadow */
+    }
+
+    .description {
+      font-size: 16px;
+      color: #555;
+      margin-bottom: 25px;
+      line-height: 1.6; /* Improved readability */
+    }
+
+    .btn {
+      padding: 12px 25px; /* Slightly larger buttons */
+      margin: 8px; /* More spacing between buttons */
+      font-size: 19px; /* Larger font */
+      border: none;
+      border-radius: 8px; /* More rounded corners */
+      cursor: pointer;
+      background-color: #4CAF50; /* Green primary button */
+      color: white;
+      transition: background-color 0.3s ease, transform 0.1s ease; /* Smooth hover effects */
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Button shadow */
+    }
+
+    .btn:hover:not(:disabled) {
+      background-color: #45a049;
+      transform: translateY(-2px);
+    }
+
+    .btn:active:not(:disabled) {
+      transform: translateY(0);
+      box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+    }
+
+    .btn:disabled {
+      background-color: #cccccc; /* Light gray for disabled buttons */
+      color: #888888; /* Darker gray text */
+      cursor: not-allowed;
+      box-shadow: none; /* No shadow when disabled */
+      transform: none; /* No transform when disabled */
+    }
+
+    /* Styles for the Upload Mode */
+    #uploadInput {
+      display: block;
+      margin: 20px auto;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    #uploadPreview {
+      margin-bottom: 20px;
+      min-height: 240px; /* To prevent layout shift before image loads */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 2px dashed #a3e4d7;
+      border-radius: 10px;
+    }
+
+    #uploadedImagePreview {
+      max-width: 100%;
+      max-height: 240px;
+      object-fit: contain; /* Use contain for user uploads to see full image */
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    }
+
+    #uploadResultText, #sessionStatus {
+      font-size: 18px;
+      font-weight: bold;
+      color: #333;
+      margin-top: 20px;
+      min-height: 30px; /* Give some space for messages */
+    }
+
+    /* Styles for the NEW Final Result Section - Unified with game mode */
+    #finalResultContainer {
+      margin-top: 0px; /* Adjust margin as it's now top-level within uploadScreen when shown */
+      padding-top: 0px; /* No top padding inside the container */
+      border-top: none; /* Remove previous border */
+      /* No change to display, it's controlled by JS */
+    }
+
+    #finalResultHeader {
+      font-size: 32px; /* Consistent with main H1 */
+      color: #2e8b57; /* Darker green */
+      margin-bottom: 15px;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.2); /* Softer shadow */
+    }
+
+    #finalResultImage {
+      max-width: 80%; /* Adjust size as needed */
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      margin: 20px auto; /* Center the image and provide spacing */
+      display: block; /* Ensures it takes its own line and margin auto works */
+    }
+
+    #finalResultMessage {
+      font-size: 20px; /* Slightly larger for emphasis */
+      font-weight: bold; /* Bold like the score/feedback in game */
+      color: #333; /* Dark gray for text */
+      margin-top: 20px;
+      line-height: 1.5;
+    }
+
+    /* Button Group Styling for side-by-side layout */
+    .button-group {
+      display: flex;
+      flex-wrap: wrap; /* Allows buttons to wrap to next line if space is limited */
+      justify-content: center; /* Centers buttons horizontally */
+      margin-top: 30px; /* Space above the button group */
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <div id="uploadScreen">
+        <h1 id="mainCuddlePredictorHeader">Cuddle Predictor</h1>
+        <p id="mainDescription" class="description">
+            Upload images of animals, and I'll tell you if I (the Teachable Machine) would cuddle them! After up to 10 images, you'll get an overall friendship score, or you can check your score early.
+        </p>
+
+        <input type="file" id="uploadInput" accept="image/*">
+        <div id="uploadPreview">
+            <img id="uploadedImagePreview" src="" alt="Image Preview" style="display:none;">
+            <p id="uploadPlaceholder">Your image will appear here</p>
+        </div>
+        <button id="classifyUploadBtn" class="btn" disabled>Classify Image</button>
+
+        <div id="uploadResultText"></div>
+        <div id="sessionStatus" style="display:none;"></div>
+        
+        <div id="gameButtons" class="button-group">
+            <button id="uploadNextImageBtn" class="btn" style="display:none;">Upload Another Image</button>
+            <button id="seeResultNowBtn" class="btn" style="display:none;">See Final Result Now</button>
+        </div>
+
+        <div id="finalResultContainer" style="display:none;">
+            <h2 id="finalResultHeader">Result</h2>
+            <img id="finalResultImage" src="" alt="Final Result Image" style="display:none;">
+            <p id="finalResultMessage"></p>
+            <div class="button-group">
+                <button id="resetUploadBtn" class="btn" style="display:none;">Start New Session</button>
+                <button id="backToMainBtn" class="btn" style="display:none;">Back to Main</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="lib/ml5.1.2.1.min.js"></script>
+    <script src="lib/p5.min.js"></script>
+    <script src="upload.js"></script>
+  </main>
+</body>
+</html>

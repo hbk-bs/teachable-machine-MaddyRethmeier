@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Animal Cuddle Game</title>
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #e4f8fc; /* Light blue background */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden; /* Prevent scrolling if not needed */
+    }
+
+    main {
+      text-align: center;
+      width: 100%;
+      max-width: 500px;
+      padding: 20px;
+      background-color: #fff; /* White background for the game content */
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    }
+
+    h1 {
+      font-size: 32px;
+      color: #2e8b57; /* Darker green for headline */
+      margin-bottom: 15px;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.2); /* Softer shadow */
+    }
+
+    .btn {
+      padding: 12px 25px; /* Slightly larger buttons */
+      margin: 8px; /* More spacing between buttons */
+      font-size: 19px; /* Larger font */
+      border: none;
+      border-radius: 8px; /* More rounded corners */
+      cursor: pointer;
+      background-color: #4CAF50; /* Green primary button */
+      color: white;
+      transition: background-color 0.3s ease, transform 0.1s ease; /* Smooth hover effects */
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Button shadow */
+    }
+
+    .btn:hover:not(:disabled) {
+      background-color: #45a049;
+      transform: translateY(-2px);
+    }
+
+    .btn:active:not(:disabled) {
+      transform: translateY(0);
+      box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+    }
+
+    /* Specific button styling */
+    #yesBtn {
+      background-color: #28a745; /* A more vibrant green for 'Cuddle' */
+    }
+    #yesBtn:hover:not(:disabled) {
+      background-color: #218838;
+    }
+
+    #noBtn {
+      background-color: #dc3545; /* Red for 'No Cuddle' */
+    }
+    #noBtn:hover:not(:disabled) {
+      background-color: #c82333;
+    }
+
+    .btn:disabled {
+      background-color: #cccccc; /* Light gray for disabled buttons */
+      color: #888888; /* Darker gray text */
+      cursor: not-allowed;
+      box-shadow: none; /* No shadow when disabled */
+      transform: none; /* No transform when disabled */
+    }
+
+    /* Progress Bar Container */
+    .progress-container {
+      width: 100%;
+      background-color: #ddd;
+      border-radius: 25px;
+      overflow: hidden;
+      margin-bottom: 20px; /* More space below progress bar */
+      height: 35px; /* Taller progress bar */
+      position: relative;
+      box-shadow: inset 0 1px 3px rgba(0,0,0,0.1); /* Inner shadow for depth */
+    }
+
+    .progress-fill {
+      background-color: #4CAF50;
+      height: 100%;
+      width: 0%;
+      transition: width 0.6s ease-out; /* Slower, smoother transition */
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
+      border-radius: 25px; /* Match container border-radius */
+    }
+
+    .progress-text {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      color: white;
+      pointer-events: none;
+      font-size: 17px;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.4); /* Stronger text shadow */
+    }
+
+    #animalImage img {
+      width: 320px;
+      height: 240px;
+      object-fit: cover;
+      border: 4px solid #a3e4d7; /* A softer, themed border */
+      border-radius: 10px; /* Rounded image corners */
+      margin-bottom: 25px; /* More space below image */
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* More prominent image shadow */
+    }
+
+    #score, #feedback {
+      margin-top: 20px; /* More space above score/feedback */
+      font-size: 20px; /* Larger font */
+      font-weight: bold;
+      color: #333;
+      min-height: 24px;
+      box-sizing: border-box;
+    }
+
+    #feedback {
+      font-style: italic;
+      color: #666;
+      margin-bottom: 15px; /* Space below feedback */
+    }
+
+    #getResultBtn {
+      margin-top: 30px; /* More space above this button */
+      background-color: #007bff; /* Blue for 'Get Result' */
+    }
+    #getResultBtn:hover:not(:disabled) {
+      background-color: #0056b3;
+    }
+
+    #tryAgainBtn, #backToMainBtn { /* Added backToMainBtn */
+      margin-top: 30px;
+      background-color: #6c757d; /* Gray for 'Try Again' */
+    }
+    #tryAgainBtn:hover:not(:disabled), #backToMainBtn:hover:not(:disabled) {
+      background-color: #5a6268;
+    }
+
+    #resultImage img {
+      max-width: 80%; /* Ensure result image fits */
+      height: auto;
+      border-radius: 10px;
+      margin-top: 20px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <div id="gameScreen">
+      <div class="progress-container">
+        <div id="roundProgressFill" class="progress-fill"></div>
+        <div id="roundProgressText" class="progress-text">Round: 1 / 20</div>
+      </div>
+
+      <div id="animalImage"><img src="" alt="Animal" /></div>
+
+      <button id="yesBtn" class="btn">Cuddle</button>
+      <button id="noBtn" class="btn">No Cuddle</button>
+      <button id="getResultBtn" class="btn">Get Your Result</button>
+
+      <div id="resultImage">
+        <img src="" alt="Result Image" id="resultImg" width="200" />
+      </div>
+      <button id="tryAgainBtn" class="btn" style="display:none;">Try Again</button>
+      <button id="backToMainBtn" class="btn" style="display:none;">Back to Main</button>
+
+      <div id="feedback"></div>
+      <div id="score" style="display: none;">Score: 0</div>
+    </div>
+
+    <script src="lib/ml5.1.2.1.min.js"></script>
+    <script src="lib/p5.min.js"></script>
+    <script src="game.js"></script>
+  </main>
+</body>
+</html>
