@@ -1,27 +1,3 @@
-<!--
-  MIT License
-
-  Copyright (c) 2025 [MaddyRethmeier]
-
-  Permission is hereby granted, free of charge, to any person obtaining a copy
-  of this software and associated documentation files (the "Software"), to deal
-  in the Software without restriction, including without limitation the rights
-  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-  copies of the Software, and to permit persons to whom the Software is
-  furnished to do so, subject to the following conditions:
-
-  The above copyright notice and this permission notice shall be included in all
-  copies or substantial portions of the Software.
-
-  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-  SOFTWARE.
--->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,10 +9,11 @@
       height: 100%;
       margin: 0;
       font-family: Arial, sans-serif;
-      background-color: #e4f8fc;
+      background-color: #e4f8fc; /* Light blue background */
       display: flex;
       justify-content: center;
       align-items: center;
+      overflow: hidden; /* Prevent scrolling if not needed */
     }
 
     main {
@@ -44,6 +21,9 @@
       width: 100%;
       max-width: 500px;
       padding: 20px;
+      background-color: #fff; /* White background for the game content */
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
     }
 
     /* Start Screen */
@@ -58,9 +38,9 @@
     /* Headline */
     h1 {
       font-size: 32px;
-      color: #4CAF50;
+      color: #2e8b57; /* Darker green for headline */
       margin-bottom: 15px;
-      text-shadow: 1px 1px 2px #000;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.2); /* Softer shadow */
     }
 
     /* Description Text */
@@ -68,23 +48,55 @@
       font-size: 16px;
       color: #555;
       margin-bottom: 25px;
-      line-height: 1.5;
+      line-height: 1.6; /* Improved readability */
     }
 
     .btn {
-      padding: 10px 20px;
-      margin: 5px;
-      font-size: 18px;
+      padding: 12px 25px; /* Slightly larger buttons */
+      margin: 8px; /* More spacing between buttons */
+      font-size: 19px; /* Larger font */
       border: none;
-      border-radius: 5px;
+      border-radius: 8px; /* More rounded corners */
       cursor: pointer;
-      background-color: #4CAF50;
+      background-color: #4CAF50; /* Green primary button */
       color: white;
+      transition: background-color 0.3s ease, transform 0.1s ease; /* Smooth hover effects */
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Button shadow */
     }
 
-    .btn:hover {
+    .btn:hover:not(:disabled) { /* Hover effect only when not disabled */
       background-color: #45a049;
+      transform: translateY(-2px); /* Slight lift on hover */
     }
+
+    .btn:active:not(:disabled) { /* Click effect */
+      transform: translateY(0);
+      box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+    }
+
+    /* Specific button styling */
+    #yesBtn {
+      background-color: #28a745; /* A more vibrant green for 'Cuddle' */
+    }
+    #yesBtn:hover:not(:disabled) {
+      background-color: #218838;
+    }
+
+    #noBtn {
+      background-color: #dc3545; /* Red for 'No Cuddle' */
+    }
+    #noBtn:hover:not(:disabled) {
+      background-color: #c82333;
+    }
+
+    .btn:disabled {
+      background-color: #cccccc; /* Light gray for disabled buttons */
+      color: #888888; /* Darker gray text */
+      cursor: not-allowed;
+      box-shadow: none; /* No shadow when disabled */
+      transform: none; /* No transform when disabled */
+    }
+
 
     /* Progress Bar Container */
     .progress-container {
@@ -92,20 +104,22 @@
       background-color: #ddd;
       border-radius: 25px;
       overflow: hidden;
-      margin-bottom: 15px;
-      height: 30px;
+      margin-bottom: 20px; /* More space below progress bar */
+      height: 35px; /* Taller progress bar */
       position: relative;
+      box-shadow: inset 0 1px 3px rgba(0,0,0,0.1); /* Inner shadow for depth */
     }
 
     .progress-fill {
       background-color: #4CAF50;
       height: 100%;
       width: 0%;
-      transition: width 0.4s ease;
+      transition: width 0.6s ease-out; /* Slower, smoother transition */
       position: absolute;
       top: 0;
       left: 0;
       z-index: 1;
+      border-radius: 25px; /* Match container border-radius */
     }
 
     .progress-text {
@@ -119,61 +133,73 @@
       font-weight: bold;
       color: white;
       pointer-events: none;
-      font-size: 16px;
-      text-shadow: 1px 1px 2px #000;
+      font-size: 17px;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.4); /* Stronger text shadow */
     }
 
     #animalImage img {
       width: 320px;
       height: 240px;
       object-fit: cover;
-      border: 2px solid #ccc;
-      margin-bottom: 15px;
+      border: 4px solid #a3e4d7; /* A softer, themed border */
+      border-radius: 10px; /* Rounded image corners */
+      margin-bottom: 25px; /* More space below image */
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* More prominent image shadow */
     }
 
     #score, #feedback {
-      margin-top: 15px;
-      font-size: 18px;
+      margin-top: 20px; /* More space above score/feedback */
+      font-size: 20px; /* Larger font */
+      font-weight: bold;
+      color: #333;
     }
 
     #feedback {
       font-style: italic;
-    }
-
-    .btn:disabled {
-      background-color: #ffffff;
-      cursor: not-allowed;
+      color: #666;
+      margin-bottom: 15px; /* Space below feedback */
     }
 
     #getResultBtn {
+      margin-top: 30px; /* More space above this button */
+      background-color: #007bff; /* Blue for 'Get Result' */
+    }
+    #getResultBtn:hover:not(:disabled) {
+      background-color: #0056b3;
+    }
+
+    #tryAgainBtn {
+      margin-top: 30px;
+      background-color: #6c757d; /* Gray for 'Try Again' */
+    }
+    #tryAgainBtn:hover:not(:disabled) {
+      background-color: #5a6268;
+    }
+
+    #resultImage img {
+      max-width: 80%; /* Ensure result image fits */
+      height: auto;
+      border-radius: 10px;
       margin-top: 20px;
-      display: none;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
     }
-
-    #resultImage {
-      display: none;
-    }
-
   </style>
 </head>
 <body>
   <main>
-    <!-- Start Screen -->
     <div id="startScreen">
       <h1>To Cuddle or not to Cuddle</h1>
       <p class="description">
         Welcome to "To Cuddle or not to Cuddle"!
         In each round, you'll be shown an image of an animal, and your task is simple: decide whether or not you would want to cuddle it. Don’t think about danger, survival, or practicality—this game is all about your gut feeling and personal preference.
-        
+
         Each animal has been pre-classified based on my own opinions, so let's see how closely your cuddly instincts match mine!
-        
+
       </p>
       <button id="letsPlayBtn" class="btn">Let's Play</button>
     </div>
 
-    <!-- Game Screen -->
     <div id="gameScreen">
-      <!-- Progress Bar -->
       <div class="progress-container">
         <div id="roundProgressFill" class="progress-fill"></div>
         <div id="roundProgressText" class="progress-text">Round: 1 / 20</div>
@@ -198,21 +224,5 @@
     <script src="lib/p5.min.js"></script>
     <script src="index.js"></script>
   </main>
-
-  <script>
-    // When the "Let's Play" button is clicked, start the game
-    document.getElementById("letsPlayBtn").addEventListener("click", function() {
-      // Hide the start screen (intro)
-      document.getElementById("startScreen").style.display = "none";
-      
-      // Show the game screen
-      document.getElementById("gameScreen").style.display = "block";
-      
-      // Start the game by calling the setupGame function
-      setupGame();
-    });
-
-    // Your existing JS functions for the game setup (setupGame, loadNextRound, etc.)
-  </script>
 </body>
 </html>
