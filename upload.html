@@ -158,9 +158,9 @@
 <body>
   <main>
     <div id="uploadScreen">
-        <h1 id="mainCuddlePredictorHeader">Cuddle Predictor</h1>
+        <h1 id="mainCuddlePredictorHeader">Cuddle Compability </h1>
         <p id="mainDescription" class="description">
-            Upload images of animals, and I'll tell you if I (the Teachable Machine) would cuddle them! After up to 10 images, you'll get an overall friendship score, or you can check your score early.
+            Upload images of animals, and I'll tell you if I would cuddle them! You may upload up to 10 pictures of your cuddly friends. Lets see how high our Friendship Score can get! Good Luck! <3
         </p>
 
         <input type="file" id="uploadInput" accept="image/*">
@@ -168,15 +168,15 @@
             <img id="uploadedImagePreview" src="" alt="Image Preview" style="display:none;">
             <p id="uploadPlaceholder">Your image will appear here</p>
         </div>
-        <button id="classifyUploadBtn" class="btn" disabled style="display:none;">Classify Image</button>
+        <button id="classifyUploadBtn" class="btn" disabled style="display:none;">Judge the Cuddle</button>
 
         <div id="uploadResultText"></div>
         <div id="sessionStatus" style="display:none;"></div>
 
         <div id="gameButtons" class="button-group">
-            <button id="uploadNextImageBtn" class="btn" style="display:none;">Upload Another Image</button>
-            <button id="seeResultNowBtn" class="btn" style="display:none;">See Final Result Now</button>
-            <button id="initialBackToMainBtn" class="btn" style="display:none;">Back to Main Menu</button>
+            <button id="uploadNextImageBtn" class="btn" style="display:none;">Upload another Cutie</button>
+            <button id="seeResultNowBtn" class="btn" style="display:none;">See my Score NOW</button>
+            <button id="initialBackToMainBtn" class="btn" style="display:none;">Back to the Start</button>
         </div>
 
         <div id="finalResultContainer" style="display:none;">
@@ -185,8 +185,8 @@
             <img id="finalResultImage" src="" alt="Final Result Image" style="display:none;">
             <p id="finalResultMessage"></p>
             <div class="button-group">
-                <button id="resetUploadBtn" class="btn">Start New Session</button>
-                <button id="backToMainBtn" class="btn">Back to Main</button>
+                <button id="resetUploadBtn" class="btn">Lets try again</button>
+                <button id="backToMainBtn" class="btn">Back to the Start</button>
             </div>
         </div>
     </div>

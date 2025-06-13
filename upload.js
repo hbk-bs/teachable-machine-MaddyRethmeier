@@ -540,9 +540,9 @@ function calculateFinalFriendshipScore() {
   if (uploadedImageCount === MAX_IMAGES_PER_SESSION && totalScore === MAX_IMAGES_PER_SESSION) {
       finalMessage = "We must be soulmates! Forget friends - we are destined for each other!";
   } else if (averageScore <= 0.25) {
-      finalMessage = "No way we, are enemies! We could not be friends in a thousand years!";
+      finalMessage = "No way! We are enemies! We could not be friends in a thousand years!";
   } else if (averageScore > 0.25 && averageScore <= 0.5) {
-      finalMessage = "You seem to be okay but more than small talk will never be between us.";
+      finalMessage = "You seem to be okay but more than smalltalk will never be between us.";
   } else if (averageScore > 0.5 && averageScore <= 0.75) {
       finalMessage = "Hey I think. I found a new great friend.";
   } else if (averageScore > 0.75 && averageScore <= 1) {

@@ -38,6 +38,21 @@
       color: #555;
       margin-bottom: 25px;
       line-height: 1.6; /* Improved readability */
+      /* Added styles for better paragraph spacing and emphasis */
+      text-align: left; /* Align text left for better readability */
+      padding: 0 10px; /* Add some horizontal padding */
+    }
+
+    /* Style for headings within the description */
+    .description h2 {
+      font-size: 20px;
+      color: #2e8b57;
+      margin-top: 20px;
+      margin-bottom: 10px;
+    }
+
+    .description p {
+      margin-bottom: 1em; /* Space between paragraphs */
     }
 
     .btn {
@@ -67,13 +82,20 @@
 <body>
   <main>
     <div id="startScreen">
-      <h1>To Cuddle or not to Cuddle</h1>
-      <p class="description">
-        Welcome to "To Cuddle or not to Cuddle"!
-        Choose between playing a multi-round game where you decide whether to cuddle various animals, or upload your own image to see if I (the Teachable Machine) would cuddle it and if we'd be friends!
-      </p>
-      <button id="letsPlayBtn" class="btn" onclick="window.location.href='game.html'">Play Game</button>
-      <button id="uploadOwnBtn" class="btn" onclick="window.location.href='upload.html'">Upload Your Own</button>
+      <h1>To Cuddle or Not to Cuddle</h1>
+      <div class="description">
+        <p>Welcome to "To Cuddle or Not to Cuddle"! This game is all about deciding which animals and creatures you'd snuggle. Based on your choices, I'll give you my honest feedback on how animal-friendly you are and if we could be friends, given my own cuddle preferences. Forget common sense—just be honest and trust your gut when deciding which creatures deserve a cuddle and which don't.</p>
+
+        <h2>Animal Friend or Not?!</h2>
+        <p>In this version, you simply decide which animals you would or wouldn't cuddle.</p>
+
+        <h2>Can We Be Friends?!</h2>
+        <p>For this mode, you can upload pictures of animals you'd want to cuddle, and I'll give you my honest feedback on my cuddle preference for them.</p>
+
+        <p>Choose your game, and let the cuddling commence! Good luck!</p>
+      </div>
+      <button id="letsPlayBtn" class="btn" onclick="window.location.href='game.html'">Animal Friend or Not</button>
+      <button id="uploadOwnBtn" class="btn" onclick="window.location.href='upload.html'">Can We Be Friends</button>
     </div>
   </main>
 </body>
