@@ -151,11 +151,11 @@
       background-color: #0056b3;
     }
 
-    #tryAgainBtn, #backToMainBtn { /* Added backToMainBtn */
+    #tryAgainBtn { /* Removed #backToMainBtn here */
       margin-top: 30px;
       background-color: #6c757d; /* Gray for 'Try Again' */
     }
-    #tryAgainBtn:hover:not(:disabled), #backToMainBtn:hover:not(:disabled) {
+    #tryAgainBtn:hover:not(:disabled) {
       background-color: #5a6268;
     }
 
@@ -166,11 +166,35 @@
       margin-top: 20px;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
     }
+
+    /* Style for the always-present Back to Main button */
+    #gameControls {
+      display: flex;
+      justify-content: flex-start; /* Push button to the right */
+      width: 100%;
+      margin-bottom: 15px; /* Space below the button */
+    }
+
+    #gameControls .btn {
+      background-color: #3a81cc; /* Gray color for consistency */
+      font-size: 16px; /* Slightly smaller for control button */
+      padding: 8px 15px;
+      margin: 0; /* Remove extra margin */
+    }
+
+    #gameControls .btn:hover {
+      background-color: #386a91;
+    }
+
   </style>
 </head>
 <body>
   <main>
     <div id="gameScreen">
+      <div id="gameControls">
+        <button id="backToMainBtn" class="btn">Back to Main</button>
+      </div>
+
       <div class="progress-container">
         <div id="roundProgressFill" class="progress-fill"></div>
         <div id="roundProgressText" class="progress-text">Round: 1 / 20</div>
@@ -186,8 +210,6 @@
         <img src="" alt="Result Image" id="resultImg" width="200" />
       </div>
       <button id="tryAgainBtn" class="btn" style="display:none;">Try Again</button>
-      <button id="backToMainBtn" class="btn" style="display:none;">Back to Main</button>
-
       <div id="feedback"></div>
       <div id="score" style="display: none;">Score: 0</div>
     </div>

@@ -25,7 +25,7 @@
 // Classifier Variable
 let classifier;
 // IMPORTANT: Use your Teachable Machine model URL here
-let imageModelURL = 'https://teachablemachine.withgoogle.com/models/UVnwStPEv/'; 
+let imageModelURL = 'https://teachablemachine.withgoogle.com/models/UVnwStPEv/';
 
 // Game state variables
 let score = 0;
@@ -92,6 +92,7 @@ function setupGameListeners() {
   document.getElementById('noBtn').addEventListener('click', () => handleChoice('no'));
   document.getElementById('getResultBtn').addEventListener('click', showFinalScore);
   document.getElementById('tryAgainBtn').addEventListener('click', resetGame);
+  // Event listener for the always-present "Back to Main" button
   document.getElementById('backToMainBtn').addEventListener('click', () => {
     window.location.href = 'index.html'; // Navigate back to the main menu
   });
@@ -99,6 +100,7 @@ function setupGameListeners() {
   // Initially hide elements that are not part of the current game state
   document.getElementById('score').style.display = 'none';
   document.getElementById('resultImage').style.display = 'none';
+  // The 'backToMainBtn' will be visible by default now in HTML
 }
 
 /**
@@ -224,7 +226,7 @@ function handleChoice(choice) {
     // After a short delay, indicate game is done and show result button
     setTimeout(() => {
       document.getElementById('roundProgressText').textContent = `All done!`;
-      document.getElementById('getResultBtn').style.display = 'inline-block';
+      document.getElementById('getResultBtn').style.display = 'inline-block';   
     }, 1500);
   } else {
     // Proceed to the next round after a short delay
@@ -244,6 +246,7 @@ function showFinalScore() {
   document.getElementById('noBtn').style.display = 'none';
   document.getElementById('animalImage').style.display = 'none';
   document.getElementById('getResultBtn').style.display = 'none';
+ 
 
   document.getElementById('score').style.display = 'block';
   document.getElementById('score').textContent = `Final Score: ${score}`;
@@ -270,7 +273,11 @@ function showFinalScore() {
   document.getElementById('resultImage').style.display = 'block';
   document.getElementById('resultImg').src = resultImage; // Set the result image source
   document.getElementById('tryAgainBtn').style.display = 'inline-block'; // Show "Try Again" button
-  document.getElementById('backToMainBtn').style.display = 'inline-block'; // Show "Back to Main" button
+  // Re-add a "Back to Main" button here for the result screen if desired, or rely on the previous one.
+  // For this scenario, we assume you want the *original* button to stay hidden
+  // and the player will click 'Try Again' or manually navigate back if they choose.
+  // If you want a *new* 'Back to Main' button on the results screen, you'd add one to HTML here and show it.
+  // Given the prompt, it seems you want it to disappear when results are shown.
 }
 
 /**
@@ -290,7 +297,7 @@ function resetGame() {
   document.getElementById('score').style.display = 'none';
   document.getElementById('tryAgainBtn').style.display = 'none';
   document.getElementById('getResultBtn').style.display = 'none';
-  document.getElementById('backToMainBtn').style.display = 'none'; // Hide "Back to Main" initially
+  document.getElementById('gameControls').style.display = 'flex'; // Ensure 'Back to Main' is visible again
   document.getElementById('animalImage').style.display = 'block';
   document.getElementById('score').textContent = "Score: 0"; // Reset score display
   document.getElementById('feedback').textContent = ""; // Clear feedback

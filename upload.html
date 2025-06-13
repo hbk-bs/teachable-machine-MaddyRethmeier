@@ -121,6 +121,14 @@
       text-shadow: 1px 1px 2px rgba(0,0,0,0.2); /* Softer shadow */
     }
 
+    /* NEW: Style for the score display */
+    #finalNumericScore {
+        font-size: 24px;
+        font-weight: bold;
+        color: #2e8b57; /* Same color as header for prominence */
+        margin-bottom: 20px; /* Space below the score */
+    }
+
     #finalResultImage {
       max-width: 80%; /* Adjust size as needed */
       height: auto;
@@ -160,23 +168,25 @@
             <img id="uploadedImagePreview" src="" alt="Image Preview" style="display:none;">
             <p id="uploadPlaceholder">Your image will appear here</p>
         </div>
-        <button id="classifyUploadBtn" class="btn" disabled>Classify Image</button>
+        <button id="classifyUploadBtn" class="btn" disabled style="display:none;">Classify Image</button>
 
         <div id="uploadResultText"></div>
         <div id="sessionStatus" style="display:none;"></div>
-        
+
         <div id="gameButtons" class="button-group">
             <button id="uploadNextImageBtn" class="btn" style="display:none;">Upload Another Image</button>
             <button id="seeResultNowBtn" class="btn" style="display:none;">See Final Result Now</button>
+            <button id="initialBackToMainBtn" class="btn" style="display:none;">Back to Main Menu</button>
         </div>
 
         <div id="finalResultContainer" style="display:none;">
             <h2 id="finalResultHeader">Result</h2>
+            <p id="finalNumericScore" style="display:none;"></p>
             <img id="finalResultImage" src="" alt="Final Result Image" style="display:none;">
             <p id="finalResultMessage"></p>
             <div class="button-group">
-                <button id="resetUploadBtn" class="btn" style="display:none;">Start New Session</button>
-                <button id="backToMainBtn" class="btn" style="display:none;">Back to Main</button>
+                <button id="resetUploadBtn" class="btn">Start New Session</button>
+                <button id="backToMainBtn" class="btn">Back to Main</button>
             </div>
         </div>
     </div>
