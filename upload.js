@@ -525,15 +525,15 @@ function calculateFinalFriendshipScore() {
   // You should replace 'assets/your_final_result_image.png' with actual image paths
   // based on the averageScore for a more dynamic and engaging result.
   if (averageScore <= 0.25) {
-      finalResultImage.src = 'assets/enemy_result.png'; // Example image for low score
+      finalResultImage.src = 'picturesNew/58.jpg'; // Example image for low score
   } else if (averageScore > 0.25 && averageScore <= 0.5) {
-      finalResultImage.src = 'assets/okay_friend_result.png'; // Example image for medium-low score
+      finalResultImage.src = 'picturesNew/56.jpg'; // Example image for medium-low score
   } else if (averageScore > 0.5 && averageScore <= 0.75) {
-      finalResultImage.src = 'assets/new_friend_result.png'; // Example image for medium-high score
+      finalResultImage.src = 'picturesNew/55.jpg'; // Example image for medium-high score
   } else if (averageScore > 0.75 && averageScore <= 1) {
-      finalResultImage.src = 'assets/best_friends_result.png'; // Example image for high score
+      finalResultImage.src = 'picturesNew/57.jpg'; // Example image for high score
   } else {
-      finalResultImage.src = 'assets/default_result.png'; // Fallback or unexpected (you might not need this if ranges cover all)
+      finalResultImage.src = 'picturesNew/55.jpg'; // Fallback or unexpected (you might not need this if ranges cover all)
   }
   // --- End Image Logic ---
 

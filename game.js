@@ -257,16 +257,16 @@ function showFinalScore() {
   // Determine final message and image based on score ranges (tuned for 20 rounds)
   if (score <= 5) {
     finalMessage = "You hate animals and they hate you.";
-    resultImage = "pictures/angry.JPG";
+    resultImage = "picturesNew/54.jpg";
   } else if (score <= 10) {
     finalMessage = "Maybe avoid animals in the wild... stick to pets.";
-    resultImage = "pictures/pets.JPG";
+    resultImage = "picturesNew/52.jpg";
   } else if (score <= 15) {
     finalMessage = "Wow you are an animal fanatic aren't you?";
-    resultImage = "pictures/happy.JPG";
+    resultImage = "picturesNew/53.jpg";
   } else { // Scores above 15 (up to 20)
     finalMessage = "A Disney princess would be jealous of all your animal friends!";
-    resultImage = "pictures/princes.JPG";
+    resultImage = "picturesNew/51.jpg";
   }
 
   document.getElementById('feedback').textContent = finalMessage;
