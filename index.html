@@ -97,49 +97,52 @@
       <button id="letsPlayBtn" class="btn" onclick="window.location.href='game.html'">Animal Friend or Not</button>
       <button id="uploadOwnBtn" class="btn" onclick="window.location.href='upload.html'">Can We Be Friends</button>
     </div>
-    <div id="backlink">
+    <div id="backlink-calculator">
       <style>
-        #backlink {
-          --color-accent: hsl(198, 100%, 50%);
-          position: absolute;
-          top: 8px;
-          right: 8px;
-          border: 1px dashed black;
-          background-color: white;
-          padding: 8px;
-          cursor: pointer;
-          color: black;
-          font-size: 0.8rem;
-          font-weight: bold;
-          transition: all 0.3s ease;
-          transform: rotate(-2deg) scale(0.9);
-          box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
-          a {
-            text-decoration: none;
-            color: black;
-            color: inherit;
-            text-decoration: underline;
-            background-image: linear-gradient(to right,
-                var(--color-accent) 0%,
-                var(--color-accent) 100%);
-            background-size: 0% 100%;
-            background-position: left center;
-            background-repeat: no-repeat;
-            transition: background-size 0.2s ease-in-out;
-            padding: 0.5rem;
-          }
-          a:hover {
-            background-size: 100% 100%;
-            color: white;
-          }
+          @import url('https://fonts.googleapis.com/css2?family=Arial&display=swap');
   
-        }
-        #backlink:hover {
-          transform: rotate(2deg) scale(1);
-        }
+          #backlink-calculator {
+              --color-accent: #45a049; /* Matches hover color of buttons */
+              position: absolute;
+              top: 8px;
+              right: 8px;
+              border: 1px dashed #45a049; /* Matches border color */
+              background-color: #4CAF50; /* Matches button background */
+              padding: 8px;
+              cursor: pointer;
+              color: white; /* Text color */
+              font-size: 0.8rem;
+              font-weight: bold;
+              transition: all 0.3s ease;
+              transform: rotate(-2deg) scale(0.9);
+              box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+              font-family: Arial, sans-serif;
+              z-index: 10;
+          }
+          #backlink-calculator:hover {
+              transform: rotate(2deg) scale(1);
+          }
+          #backlink-calculator a {
+              text-decoration: none;
+              color: inherit;
+              background-image: linear-gradient(to right,
+                                  var(--color-accent) 0%,
+                                  var(--color-accent) 100%);
+              background-size: 0% 100%;
+              background-position: left center;
+              background-repeat: no-repeat;
+              transition: background-size 0.2s ease-in-out;
+              padding: 0.5rem;
+              display: inline-block;
+          }
+          #backlink-calculator a:hover {
+              background-size: 100% 100%;
+              color: white;
+          }
       </style>
-      <a href="https://rundgang2025.qawsed.site">Back to the Rundgang 2025</a>
-    </div>
+      <a href="https://hbk-bs.github.io/documentation-2025-MaddyRethmeier/">Back to Documentation</a>
+  </div>
+  
   </main>
 </body>
 </html>
