@@ -5,15 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Animal Cuddle Game</title>
   <style>
+    :root {
+      --header-height: 50px; /* Define a consistent height for the header */
+    }
+
     html, body {
       height: 100%;
       margin: 0;
       font-family: Arial, sans-serif;
       background-color: #e4f8fc; /* Light blue background */
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      overflow: hidden; /* Prevent scrolling if not needed */
+      display: flex; /* Changed to flex to control flow */
+      flex-direction: column; /* Stack children vertically */
+      align-items: center; /* Center main horizontally */
+      justify-content: flex-start; /* Align content from the top */
+      overflow-y: auto; /* Allow vertical scrolling */
     }
 
     main {
@@ -24,6 +29,9 @@
       background-color: #fff; /* White background for the game content */
       border-radius: 10px;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+      margin-top: var(--header-height); /* Push content below the fixed header */
+      flex-grow: 1; /* Allow main to grow and fill available space */
+      box-sizing: border-box; /* Include padding in element's total width and height */
     }
 
     h1 {
@@ -38,12 +46,10 @@
       color: #555;
       margin-bottom: 25px;
       line-height: 1.6; /* Improved readability */
-      /* Added styles for better paragraph spacing and emphasis */
       text-align: left; /* Align text left for better readability */
       padding: 0 10px; /* Add some horizontal padding */
     }
 
-    /* Style for headings within the description */
     .description h2 {
       font-size: 20px;
       color: #2e8b57;
@@ -77,9 +83,55 @@
       transform: translateY(0);
       box-shadow: 0 1px 2px rgba(0,0,0,0.1);
     }
+
+    /* Backlink Header Styles */
+    #backlink-calculator {
+      --color-accent: #45a049; /* Matches hover color of buttons */
+      position: fixed; /* Fixed position */
+      top: 0;
+      left: 0;
+      width: 100%; /* Full width */
+      height: var(--header-height); /* Use defined header height */
+      background-color: #4CAF50; /* Matches button background */
+      color: white; /* Text color */
+      font-size: 0.8rem;
+      font-weight: bold;
+      font-family: Arial, sans-serif;
+      z-index: 100; /* Ensure it's above other content */
+      box-sizing: border-box; /* Include padding in the width/height */
+      display: flex; /* Use flexbox for centering content */
+      align-items: center; /* Vertically center content */
+      justify-content: center; /* Horizontally center content */
+      border: none; /* Removed border for cleaner header */
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Subtle shadow for depth */
+      transition: none; /* Removed transform transitions for header */
+    }
+    #backlink-calculator:hover {
+        transform: none; /* No transform on hover for header */
+    }
+    #backlink-calculator a {
+        text-decoration: none;
+        color: inherit;
+        background-image: linear-gradient(to right,
+                          var(--color-accent) 0%,
+                          var(--color-accent) 100%);
+        background-size: 0% 100%;
+        background-position: left center;
+        background-repeat: no-repeat;
+        transition: background-size 0.2s ease-in-out;
+        padding: 0.5rem;
+        display: inline-block;
+    }
+    #backlink-calculator a:hover {
+        background-size: 100% 100%;
+        color: white;
+    }
   </style>
 </head>
 <body>
+  <div id="backlink-calculator">
+    <a href="https://hbk-bs.github.io/documentation-2025-MaddyRethmeier/">Back to Documentation</a>
+  </div>
   <main>
     <div id="startScreen">
       <h1>To Cuddle or Not to Cuddle</h1>
@@ -97,52 +149,6 @@
       <button id="letsPlayBtn" class="btn" onclick="window.location.href='game.html'">Animal Friend or Not</button>
       <button id="uploadOwnBtn" class="btn" onclick="window.location.href='upload.html'">Can We Be Friends</button>
     </div>
-    <div id="backlink-calculator">
-      <style>
-          @import url('https://fonts.googleapis.com/css2?family=Arial&display=swap');
-  
-          #backlink-calculator {
-              --color-accent: #45a049; /* Matches hover color of buttons */
-              position: absolute;
-              top: 8px;
-              right: 8px;
-              border: 1px dashed #45a049; /* Matches border color */
-              background-color: #4CAF50; /* Matches button background */
-              padding: 8px;
-              cursor: pointer;
-              color: white; /* Text color */
-              font-size: 0.8rem;
-              font-weight: bold;
-              transition: all 0.3s ease;
-              transform: rotate(-2deg) scale(0.9);
-              box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
-              font-family: Arial, sans-serif;
-              z-index: 10;
-          }
-          #backlink-calculator:hover {
-              transform: rotate(2deg) scale(1);
-          }
-          #backlink-calculator a {
-              text-decoration: none;
-              color: inherit;
-              background-image: linear-gradient(to right,
-                                  var(--color-accent) 0%,
-                                  var(--color-accent) 100%);
-              background-size: 0% 100%;
-              background-position: left center;
-              background-repeat: no-repeat;
-              transition: background-size 0.2s ease-in-out;
-              padding: 0.5rem;
-              display: inline-block;
-          }
-          #backlink-calculator a:hover {
-              background-size: 100% 100%;
-              color: white;
-          }
-      </style>
-      <a href="https://hbk-bs.github.io/documentation-2025-MaddyRethmeier/">Back to Documentation</a>
-  </div>
-  
   </main>
 </body>
 </html>
