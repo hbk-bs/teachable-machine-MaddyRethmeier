@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Animal Cuddle Game</title>
+  <meta name="theme-color" content="#4CAF50">
   <style>
     :root {
       --header-height: 50px; /* Define a consistent height for the header */
@@ -19,6 +20,7 @@
       align-items: center; /* Center main horizontally */
       justify-content: flex-start; /* Align content from the top */
       overflow-y: auto; /* Allow vertical scrolling */
+      padding-top: 50px; /* Added padding-top to account for fixed backlink */
     }
 
     main {
@@ -29,7 +31,7 @@
       background-color: #fff; /* White background for the game content */
       border-radius: 10px;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-      margin-top: var(--header-height); /* Push content below the fixed header */
+      margin-top: 10px; /* Adjusted margin-top to account for fixed header */
       flex-grow: 1; /* Allow main to grow and fill available space */
       box-sizing: border-box; /* Include padding in element's total width and height */
     }
@@ -84,47 +86,55 @@
       box-shadow: 0 1px 2px rgba(0,0,0,0.1);
     }
 
-    /* Backlink Header Styles */
+    /* Backlink Header Styles (from teachablemaschine.html) */
     #backlink-calculator {
-      --color-accent: #45a049; /* Matches hover color of buttons */
-      position: fixed; /* Fixed position */
-      top: 0;
-      left: 0;
-      width: 100%; /* Full width */
-      height: var(--header-height); /* Use defined header height */
-      background-color: #4CAF50; /* Matches button background */
-      color: white; /* Text color */
-      font-size: 0.8rem;
-      font-weight: bold;
-      font-family: Arial, sans-serif;
-      z-index: 100; /* Ensure it's above other content */
-      box-sizing: border-box; /* Include padding in the width/height */
-      display: flex; /* Use flexbox for centering content */
-      align-items: center; /* Vertically center content */
-      justify-content: center; /* Horizontally center content */
-      border: none; /* Removed border for cleaner header */
-      box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Subtle shadow for depth */
-      transition: none; /* Removed transform transitions for header */
-    }
-    #backlink-calculator:hover {
-        transform: none; /* No transform on hover for header */
+        --color-accent: #45a049; /* Original accent for teachablemaschine */
+        width: 100%;
+        background-color: #4CAF50; /* Original background color for backlink */
+        padding: 10px 0;
+        color: white;
+        font-size: 1rem;
+        font-weight: bold;
+        text-align: center;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        box-sizing: border-box;
+        font-family: Arial, sans-serif; /* Original font family for backlink */
+        position: fixed; /* Changed to fixed */
+        top: 0; /* Pinned to top */
+        left: 0; /* Pinned to left */
+        transform: none;
+        z-index: 1000; /* Ensure it's on top */
     }
     #backlink-calculator a {
         text-decoration: none;
         color: inherit;
-        background-image: linear-gradient(to right,
-                          var(--color-accent) 0%,
-                          var(--color-accent) 100%);
-        background-size: 0% 100%;
-        background-position: left center;
-        background-repeat: no-repeat;
-        transition: background-size 0.2s ease-in-out;
-        padding: 0.5rem;
         display: inline-block;
+        padding: 0 15px;
+        transition: background-color 0.3s ease;
     }
     #backlink-calculator a:hover {
-        background-size: 100% 100%;
+        background-color: var(--color-accent); /* Original accent color for hover */
         color: white;
+    }
+
+    @media (max-width: 768px) {
+      #backlink-calculator {
+          font-size: 1.1rem;
+          padding: 12px 0;
+      }
+      h1 {
+          font-size: 1.5rem;
+      }
+      h2 {
+          font-size: 1.3rem;
+      }
+      p {
+          font-size: 1rem;
+          line-height: 1.6;
+      }
+      body {
+          padding-top: 60px; /* Adjust padding for smaller screens */
+      }
     }
   </style>
 </head>
